@@ -18,8 +18,6 @@ public class MensagemSuporte {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
     private Long id;
-    @Column(name = "MENSAGEM", nullable = false)
-    private String mensagem;
     @Column(name = "DATA_ENVIO")
     private LocalDateTime dataEnvio = LocalDateTime.now();
 
@@ -29,4 +27,8 @@ public class MensagemSuporte {
     @ManyToOne
     @JoinColumn(name = "funcionario_id", nullable = false)
     private Funcionario funcionario;
+    @ManyToOne
+    @JoinColumn(name = "mensagem_id", nullable = false)
+    private Mensagem mensagem;
+
 }

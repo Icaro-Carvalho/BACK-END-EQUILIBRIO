@@ -1,38 +1,27 @@
 package br.com.ponto.equilibrio.api.vo;
 
+import java.time.LocalDate;
+
 import br.com.ponto.equilibrio.api.model.Funcionario;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-
-import java.time.LocalDate;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class FuncionarioVO {
-
-    @Getter
+public class FuncionarioSimplesVO {
     private Long id;
     private String nome;
-    private String cpfCnpj;
-    private String telefone;
-    private String email;
     private String cargo;
     private String departamento;
     private LocalDate dataAdmissao;
-    private EquipeVO equipe;
 
-    public FuncionarioVO(Funcionario funcionario) {
+    public FuncionarioSimplesVO(Funcionario funcionario) {
         this.id = funcionario.getId();
         this.nome = funcionario.getNome();
-        this.cpfCnpj = funcionario.getCpfCnpj();
-        this.telefone = funcionario.getTelefone();
-        this.email = funcionario.getEmail();
         this.cargo = funcionario.getCargo();
         this.departamento = funcionario.getDepartamento();
         this.dataAdmissao = funcionario.getDataAdmissao();
-        this.equipe = new EquipeVO(funcionario.getEquipe());
     }
 }

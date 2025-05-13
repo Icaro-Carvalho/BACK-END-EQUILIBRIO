@@ -17,7 +17,6 @@ public class JornadaTrabalhoVO {
     private LocalTime horaSaida;
     private LocalTime intervaloInicio;
     private LocalTime intervaloFim;
-    private Boolean bancoDeHoras;
 
 
     public JornadaTrabalhoVO(JornadaTrabalho jornadaTrabalho) {
@@ -26,7 +25,6 @@ public class JornadaTrabalhoVO {
         this.horaSaida = jornadaTrabalho.getHoraSaida();
         this.intervaloInicio = jornadaTrabalho.getIntervaloInicio();
         this.intervaloFim = jornadaTrabalho.getIntervaloFim();
-        this.bancoDeHoras = jornadaTrabalho.getBancoHoras();
     }
 
 }

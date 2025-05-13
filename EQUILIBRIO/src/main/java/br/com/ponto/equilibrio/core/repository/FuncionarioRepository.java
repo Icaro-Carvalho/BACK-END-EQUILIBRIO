@@ -6,4 +6,8 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface FuncionarioRepository extends JpaRepository<Funcionario, Long> {
+
+    boolean existsByEquipeId(Long equipeId);
+
+    boolean existsByJornadasId(Long jornadaId);
 }

@@ -1,10 +1,8 @@
 package br.com.ponto.equilibrio.api.security;
 
-import java.time.LocalDate;
 import java.util.Date;
 import java.util.function.Function;
 
-import org.springframework.boot.autoconfigure.security.oauth2.resource.OAuth2ResourceServerProperties.Jwt;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 

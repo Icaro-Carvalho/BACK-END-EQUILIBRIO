@@ -22,9 +22,9 @@ public class RhService {
         this.passwordEncoder = passwordEncoder;
     }
 
-    public Rh registrar(String email, String senha) {
+    public Rh registrar(String email, String senha, String nome, String telefone) {
         String senhaHash = passwordEncoder.encode(senha);
-        Rh rh = new Rh(email, senhaHash);
+        Rh rh = new Rh(email, senhaHash, nome, telefone);
         return rhRepository.save(rh);
     }
 

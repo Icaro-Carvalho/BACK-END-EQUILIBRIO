@@ -23,7 +23,7 @@ public class AlertaBurnout {
     private LocalDateTime dataGeracao = LocalDateTime.now();
     @Column(name = "DATA_CONCLUSAO")
     private LocalDateTime dataConclusao;
-    @Column(name = "DESCRICAO", nullable = false)
+    @Column(name = "DESCRICAO")
     private String descricao;
     @Enumerated(EnumType.STRING)
     @Column(name = "STATUS")

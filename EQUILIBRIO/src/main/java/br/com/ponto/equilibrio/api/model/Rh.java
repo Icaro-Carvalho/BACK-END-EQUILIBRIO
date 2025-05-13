@@ -1,15 +1,16 @@
 package br.com.ponto.equilibrio.api.model;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "RH")
@@ -21,6 +22,8 @@ public class Rh {
     private Long id;
     @Column(name = "NOME")
     private String nome;
+    @Column(name = "TELEFONE")
+    private String telefone;
     @Column(name = "EMAIL", nullable = false, unique = true)
     private String email;
     @Column(name = "SENHA")
@@ -30,8 +33,10 @@ public class Rh {
     @Column(name = "EXPIRACAO_CODIGO")
     private LocalDateTime expiracaoCodigo;
 
-    public Rh(String email, String senha) {
+    public Rh(String email, String senha, String nome, String telefone) {
         this.email = email;
         this.senha = senha;
+        this.nome = nome;
+        this.telefone = telefone;
     }
 }

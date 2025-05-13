@@ -1,6 +1,7 @@
 package br.com.ponto.equilibrio.api.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.http.ResponseEntity;
@@ -38,7 +39,9 @@ public class AuthController {
     public ResponseEntity<?> registrar(@RequestBody Map<String, String> request) {
         String email = request.get("email");
         String senha = request.get("senha");
-        Rh rh = rhService.registrar(email, senha);
+        String nome = request.get("nome");
+        String telefone = request.get("telefone");
+        Rh rh = rhService.registrar(email, senha, nome, telefone);
         return ResponseEntity.ok(rh);
     }
 
@@ -51,7 +54,14 @@ public class AuthController {
             String token = jwtUtil.gerarToken(new org.springframework.security.core.userdetails.User(
                 rh.getEmail(), rh.getSenha(), new ArrayList<>()
             ));
-            return ResponseEntity.ok(Map.of("token", token));
+
+            Map<String, Object> response = new HashMap<>();
+            response.put("token", token);
+            response.put("id", rh.getId());
+            response.put("nome", rh.getNome());
+            response.put("email", rh.getEmail());
+
+            return ResponseEntity.ok(response);
         })
         .orElseThrow(() -> new RuntimeException("Credenciais inválidas"));    
     }

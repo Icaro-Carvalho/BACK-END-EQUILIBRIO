@@ -3,7 +3,6 @@ package br.com.ponto.equilibrio.api.model;
 import br.com.ponto.equilibrio.api.vo.JornadaTrabalhoVO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -33,8 +32,6 @@ public class JornadaTrabalho {
     private LocalTime intervaloInicio;
     @Column(name = "INTERVALO_FIM")
     private LocalTime intervaloFim;
-    @Column(name = "BANCO_HORAS")
-    private Boolean bancoHoras;
 
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
 @JoinTable(
@@ -50,7 +47,6 @@ private Set<Funcionario> funcionarios = new HashSet<>();
         this.horaSaida = jornadaDeTrabalho.getHoraSaida();
         this.intervaloInicio = jornadaDeTrabalho.getIntervaloInicio();
         this.intervaloFim = jornadaDeTrabalho.getIntervaloFim();
-        this.bancoHoras = jornadaDeTrabalho.getBancoDeHoras();
     }
 
     public boolean equals(Object o) {

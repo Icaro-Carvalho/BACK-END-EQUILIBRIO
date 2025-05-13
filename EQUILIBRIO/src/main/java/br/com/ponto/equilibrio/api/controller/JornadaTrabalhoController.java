@@ -22,9 +22,10 @@ public class JornadaTrabalhoController {
         return ResponseEntity.status(HttpStatus.CREATED).body(jornadaTrabalhoService.cadastrarJornada(jornadaTrabalhoVO));
     }
 
-    @PutMapping("/{jornadaId}/funcionario/{funcionarioId}")
-    public ResponseEntity<JornadaTrabalhoVO> adicionarFuncionario(@PathVariable Long jornadaId, @PathVariable Long funcionarioId) {
-        JornadaTrabalhoVO jornadaTrabalhoVO = jornadaTrabalhoService.adicionarFuncionario(jornadaId, funcionarioId);
+    @PutMapping("/{jornadaId}/funcionarios")
+    public ResponseEntity<JornadaTrabalhoVO> adicionarFuncionarios(@PathVariable Long jornadaId, @RequestBody List<Long> funcionariosIds) {
+    
+        JornadaTrabalhoVO jornadaTrabalhoVO = jornadaTrabalhoService.adicionarFuncionarios(jornadaId, funcionariosIds);
         return ResponseEntity.status(HttpStatus.OK).body(jornadaTrabalhoVO);
     }
 
@@ -37,5 +38,11 @@ public class JornadaTrabalhoController {
     @GetMapping()
     public ResponseEntity<List<JornadaTrabalhoVO>> listarJornadas() {
         return ResponseEntity.status(HttpStatus.OK).body(jornadaTrabalhoService.listarJornadas());
+    }
+
+    @DeleteMapping("/{jornadaId}")
+    public ResponseEntity<Void> deletarJornada(@PathVariable Long jornadaId) {
+        jornadaTrabalhoService.deletarJornada(jornadaId);
+        return ResponseEntity.noContent().build();
     }
 }

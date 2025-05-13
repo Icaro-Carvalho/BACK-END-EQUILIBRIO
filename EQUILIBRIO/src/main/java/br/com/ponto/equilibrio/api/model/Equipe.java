@@ -1,13 +1,18 @@
 package br.com.ponto.equilibrio.api.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import br.com.ponto.equilibrio.api.vo.EquipeVO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "EQUIPE")
@@ -22,6 +27,8 @@ public class Equipe {
     @ManyToOne
     @JoinColumn(name = "gestor_id")
     private Gestor gestor;
+    @OneToMany(mappedBy = "equipe")
+    private List<Funcionario> funcionarios = new ArrayList<>();
 
     public Equipe(EquipeVO equipeVO) {
         this.id = equipeVO.getId();

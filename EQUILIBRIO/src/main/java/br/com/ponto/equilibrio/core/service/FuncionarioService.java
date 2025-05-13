@@ -6,6 +6,10 @@ import br.com.ponto.equilibrio.api.vo.FuncionarioVO;
 
 import br.com.ponto.equilibrio.core.repository.EquipeRepository;
 import br.com.ponto.equilibrio.core.repository.FuncionarioRepository;
+import jakarta.persistence.EntityNotFoundException;
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,6 +29,18 @@ public class FuncionarioService {
         funcionario.setEquipe(equipe);
         funcionarioRepository.save(funcionario);
         return new FuncionarioVO(funcionario);
+    }
+
+    public List<FuncionarioVO> listarFuncionarios() {
+        List<Funcionario> alertas = funcionarioRepository.findAll();
+        return alertas.stream().map(FuncionarioVO::new).toList();
+    }
+
+    public void deletarFuncionario(Long funcionarioId) {
+        if (!funcionarioRepository.existsById(funcionarioId)) {
+            throw new EntityNotFoundException("Funcionário não encontrado");
+        }
+        funcionarioRepository.deleteById(funcionarioId);
     }
 
 
